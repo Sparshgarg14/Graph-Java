@@ -1,0 +1,20 @@
+class Solution {
+    public List<Integer> dfs(ArrayList<Integer>list,int node,List<List<Integer>> rooms, int vis[]){
+          vis[node]=1;
+        list.add(node);
+        for(int nbrs:rooms.get(node)){
+            if(vis[nbrs]==0){
+                dfs(list, nbrs, rooms, vis);
+        }
+        
+    }
+    return list;
+    }
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        int vis [] = new int[rooms.size()];
+       ArrayList<Integer>list = new ArrayList<>();
+       dfs(list,0,rooms,vis);
+       if(list.size()==rooms.size())return true;
+       else return false;
+    }
+}
